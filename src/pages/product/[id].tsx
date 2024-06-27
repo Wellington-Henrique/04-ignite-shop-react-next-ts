@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import {
   ImageContainer,
   ProductContainer,
@@ -37,6 +36,13 @@ export default function Product({ product }: ProductProps) {
     </ProductContainer>
   );
 }
+
+export const getStaticPaths = async () => {
+  return {
+    paths: [{ params: { id: "" } }],
+    fallback: false,
+  };
+};
 
 export const getStaticProps: GetStaticProps<any, { id: string }> = async ({
   params,
